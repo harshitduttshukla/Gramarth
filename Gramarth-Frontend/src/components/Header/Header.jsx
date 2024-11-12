@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-function Header() {
+function Header({ setSearchQuery }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSearchSubmit = () => {
+    setSearchQuery(searchInput);  // Passing the search query to Home component
+  };
+
   return (
-    <header className='shadow sticky top-0 z-50 bg-gray-800'>
-      <nav className='bg-gray-900 border-gray-200 px-4 lg:px-4 py-2.5'>
-        <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'>
-          <Link to="/" className='text-yellow-500 font-bold text-xl'>
+    <header className="shadow sticky top-0 z-50 bg-gray-800">
+      <nav className="bg-gray-900 border-gray-200 px-4 lg:px-4 py-2.5">
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+          <Link to="/" className="text-yellow-500 font-bold text-xl">
             Gramarth
           </Link>
 
           <div className="flex items-center lg:order-2">
             <Link
-              to="/signup"
-              className='hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2'
+              to="signup"
+              className="hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
             >
               Sign Up
             </Link>
-            <Link  
+            <Link
               to="/login"
               className="hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
             >
@@ -56,39 +65,7 @@ function Header() {
                 {isDropdownOpen && (
                   <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg">
                     <div className="py-1">
-                      {[
-                        "Andhra Pradesh",
-                        "Arunachal Pradesh",
-                        "Assam",
-                        "Bihar",
-                        "Chhattisgarh",
-                        "Goa",
-                        "Gujarat",
-                        "Haryana",
-                        "Himachal Pradesh",
-                        "Jharkhand",
-                        "Karnataka",
-                        "Kerala",
-                        "Madhya Pradesh",
-                        "Maharashtra",
-                        "Manipur",
-                        "Meghalaya",
-                        "Mizoram",
-                        "Nagaland",
-                        "Odisha",
-                        "Punjab",
-                        "Rajasthan",
-                        "Sikkim",
-                        "Tamil Nadu",
-                        "Telangana",
-                        "Tripura",
-                        "Uttar Pradesh",
-                        "Uttarakhand",
-                        "West Bengal",
-                        "Delhi",
-                        "Jammu and Kashmir",
-                        "Ladakh",
-                      ].map((state) => (
+                      {["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar"].map((state) => (
                         <NavLink
                           key={state}
                           to={`/state/${state.toLowerCase().replace(/ /g, '-')}`}
@@ -106,10 +83,15 @@ function Header() {
               <li className="flex items-center">
                 <input
                   type="text"
-                  className='p-1 mx-2 border rounded-lg focus:outline-none'
+                  value={searchInput}
+                  onChange={handleSearchChange}
+                  className="p-1 mx-2 border rounded-lg focus:outline-none"
                   placeholder="Search..."
                 />
-                <button className='bg-yellow-500 text-white rounded-lg px-3 py-1'>
+                <button
+                  className="bg-yellow-500 text-white rounded-lg px-3 py-1"
+                  onClick={handleSearchSubmit}
+                >
                   Search
                 </button>
               </li>
