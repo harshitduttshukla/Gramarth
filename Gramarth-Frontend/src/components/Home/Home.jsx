@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import img1 from './img/Basket.png';
+=======
+
+// Import images from the `img` folder within `Home`
+// import img1 from './img/Basket.png';
+>>>>>>> 71b592a93395e80ccd8ea5c2478e5c66c98de2da
 import img2 from './img/Wood Lac Turnery.png';
 import img3 from './img/wall painting.png';
 import img4 from './img/terracotta ware dl.png';
@@ -16,7 +22,7 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const products = [
-    { id: 1, name: "Handmade Basket", image: img1, price: "₹50", description: "Mumbai" },
+    // { id: 1, name: "Handmade Basket", image: img1, price: "₹50", description: "Mumbai" },
     { id: 2, name: "Wood Lac Turnery", image: img2, price: "₹300", description: "Gujarat" },
     { id: 3, name: "Wall Painting", image: img3, price: "₹500", description: "Jharkhand" },
     { id: 4, name: "Terracotta Ware", image: img4, price: "₹1500", description: "Delhi" },
