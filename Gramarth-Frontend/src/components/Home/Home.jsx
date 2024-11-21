@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import img1 from './img/Basket.png';
-=======
+
 
 // Import images from the `img` folder within `Home`
 // import img1 from './img/Basket.png';
