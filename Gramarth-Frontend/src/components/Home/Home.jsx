@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Import images from the `img` folder within `Home`
-import img1 from './img/Basket.png';
+// import img1 from './img/Basket.png';
 import img2 from './img/Wood Lac Turnery.png';
 import img3 from './img/wall painting.png';
 import img4 from './img/terracotta ware dl.png';
